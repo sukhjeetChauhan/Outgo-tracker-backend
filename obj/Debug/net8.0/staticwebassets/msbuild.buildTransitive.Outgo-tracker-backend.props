@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/Outgo-tracker-backend.props" />
+</Project>
