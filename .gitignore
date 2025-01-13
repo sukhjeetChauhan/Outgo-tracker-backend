@@ -1,0 +1,107 @@
+# .NET Core
+bin/
+obj/
+*.db
+*.db-shm
+*.db-wal
+
+# Build Folders (you can keep bin if you'd like to checkin binaries)
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.generated.cs
+
+# Logs
+*.log
+
+# Visual Studio Code
+.vscode/
+.vscode/*
+
+# Rider
+.idea/
+.idea/*
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NPM Packages
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+
+# Local History
+.localhistory/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+
+# JetBrains Rider
+.idea/
+
+# Rider
+.idea/
+.idea/*
+
+# MacOS
+.DS_Store
+
+# Windows
+*.db
+*.db-shm
+*.db-wal
+
+# Linux
+*~
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# JetBrains Rider
+.idea/
+.idea/*
+
+# Rider
+.idea/
+.idea/*
+
+# MacOS
+.DS_Store
+
+# Windows
+*.db
+*.db-shm
+*.db-wal
+
+# Linux
+*~
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*.tmp

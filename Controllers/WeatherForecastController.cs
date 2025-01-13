@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace OutgoTrackerBackend.Controllers
+namespace Outgo_tracker_Backend.Controllers
 {
   [ApiController]
   [Route("[controller]")]
   public class WeatherForecastController : ControllerBase
   {
-    private static readonly string[] Summaries = new[]
-    {
+    private static readonly string[] Summaries =
+    [
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        ];
 
     [HttpGet]
     public IEnumerable<WeatherForecast> Get()
