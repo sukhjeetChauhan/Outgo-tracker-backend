@@ -1,14 +1,6 @@
 namespace Outgo_tracker_Backend.Models
 {
 
-  public enum Timeframe
-  {
-    Monthly,
-    Weekly,
-    Quarterly,
-    HalfYearly,
-    Yearly
-  }
 
   public class Project
   {
@@ -20,6 +12,8 @@ namespace Outgo_tracker_Backend.Models
     public Timeframe BudgetTimeframe { get; set; } = Timeframe.Monthly;
     // Navigation property
     public ICollection<ProjectUser> ProjectUsers { get; set; } = [];
+    public ICollection<Expense> Expenses { get; set; } = [];
+    public ICollection<Income> Incomes { get; set; } = [];
   }
 
 }

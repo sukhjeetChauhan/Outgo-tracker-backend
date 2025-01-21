@@ -26,6 +26,20 @@ namespace Outgo_tracker_Backend.Data
           .HasOne(pu => pu.Project)
           .WithMany(p => p.ProjectUsers)
           .HasForeignKey(pu => pu.ProjectId);
+
+      modelBuilder.Entity<Expense>().HasKey(e => e.Id); // Primary key
+
+      modelBuilder.Entity<Expense>()
+          .HasOne(e => e.Project)
+          .WithMany(p => p.Expenses)
+          .HasForeignKey(e => e.ProjectId);
+
+      modelBuilder.Entity<Income>().HasKey(i => i.Id); // Primary key
+
+      modelBuilder.Entity<Income>()
+          .HasOne(i => i.Project)
+          .WithMany(p => p.Incomes)
+          .HasForeignKey(i => i.ProjectId);
     }
   }
 }
