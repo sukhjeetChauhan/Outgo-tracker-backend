@@ -12,6 +12,8 @@ namespace Outgo_tracker_Backend.Data
     }
     public DbSet<Project> Projects { get; set; } = default!;
     public DbSet<ProjectUser> ProjectUsers { get; set; } = default!;
+    public DbSet<Expense> Expenses { get; set; } = default!;
+    public DbSet<Income> Incomes { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
