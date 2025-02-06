@@ -13,7 +13,7 @@ namespace Outgo_tracker_Backend.Models
   {
     Food,
     Groceries,
-    car,
+    Car,
     Business,
     Rent,
     Bills,
