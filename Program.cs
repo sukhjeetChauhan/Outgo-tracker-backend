@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Outgo_tracker_Backend.Data;
+using System.Text.Json.Serialization; // Import required namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +18,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+  // Convert all enums to string representation in JSON
+  options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 // Add CORS policy
 builder.Services.AddCors(options =>
 {
@@ -49,5 +56,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-
