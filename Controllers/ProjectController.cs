@@ -38,6 +38,20 @@ namespace Outgo_tracker_Backend.Controllers
       return project;
     }
 
+    //Get: api/Project/byname/{name}
+    [HttpGet("byname/{name}")]
+    public async Task<ActionResult<int>> GetProjectByName(string name)
+    {
+      var project = await _context.Projects.FirstOrDefaultAsync(p => p.Name == name);
+
+      if (project == null)
+      {
+        return NotFound();
+      }
+
+      return project.Id;
+    }
+
     // PUT: api/Project/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutProject(int id, Project project)

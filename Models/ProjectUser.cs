@@ -10,6 +10,7 @@ namespace Outgo_tracker_Backend.Models
     public string UserId { get; set; } = string.Empty;
     public Role Role { get; set; } = Role.User;
 
+
     // Navigation property (optional but recommended for bidirectionality)
     public Project? Project { get; set; }
   }

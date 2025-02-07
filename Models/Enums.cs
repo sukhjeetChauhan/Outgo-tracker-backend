@@ -37,3 +37,10 @@ public enum Role
   Admin,
   User
 }
+
+public enum Status
+{
+  Pending,
+  Confirmed,
+  Rejected
+}
