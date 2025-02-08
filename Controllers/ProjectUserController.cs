@@ -32,7 +32,7 @@ namespace Outgo_tracker_Backend.Controllers
       return Ok(userIds);
     }
 
-    // GET: api/ProjectUser/GetUsersByProjectId/2
+    // GET: api/ProjectUser/GetProjectByUserId/2
     [HttpGet("GetProjectByUserId/{userId}")]
 
     public async Task<ActionResult<IEnumerable<Project>>> GetProjectsByUserId(string userId)
