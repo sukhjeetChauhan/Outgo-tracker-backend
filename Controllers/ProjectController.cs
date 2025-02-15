@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Outgo_tracker_Backend.Data;
@@ -83,6 +84,7 @@ namespace Outgo_tracker_Backend.Controllers
     }
 
     // POST: api/Project
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Project>> PostProject(Project project)
     {
