@@ -5,6 +5,8 @@ using Outgo_tracker_Backend.Models;
 
 namespace Outgo_tracker_Backend.Controllers
 {
+  [ApiController]
+  [Route("api/[controller]")]
   public class ProjectUserController : ControllerBase
   {
     private readonly ApplicationDbContext _context;

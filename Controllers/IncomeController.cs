@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Outgo_tracker_Backend.Controllers
 {
+  [ApiController]
+  [Route("api/[controller]")]
   public class IncomeController : ControllerBase
   {
     private readonly ApplicationDbContext _context;

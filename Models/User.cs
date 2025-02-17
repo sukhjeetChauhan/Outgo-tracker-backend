@@ -8,8 +8,8 @@ namespace Outgo_tracker_Backend.Models
     public string FirstName { get; set; } = default!;
 
     public string LastName { get; set; } = default!;
-    public string Email { get; set; } = default!;
-    public int PhoneNumber { get; set; } = default!;
+    public string? Email { get; set; } = null;
+    public string? PhoneNumber { get; set; } = null;
     public int? DefaultProjectId { get; set; } = null;
 
   }

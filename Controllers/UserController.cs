@@ -5,6 +5,8 @@ using Outgo_tracker_Backend.Models;
 
 namespace Outgo_tracker_Backend.Controllers
 {
+  [ApiController]
+  [Route("api/[controller]")]
   public class UserController : ControllerBase
   {
 
@@ -34,6 +36,7 @@ namespace Outgo_tracker_Backend.Controllers
     [HttpPost]
     public async Task<ActionResult<User>> PostUser(User user)
     {
+      Console.WriteLine("User");
       _context.Users.Add(user);
       await _context.SaveChangesAsync();
 
