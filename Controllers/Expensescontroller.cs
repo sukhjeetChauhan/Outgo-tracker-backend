@@ -43,7 +43,7 @@ namespace Outgo_tracker_Backend.Controllers
     [HttpGet("Project/{projectId}/Week")]
     public async Task<ActionResult<IEnumerable<Expense>>> GetExpensesForWeek(int projectId)
     {
-      var currentDate = DateTime.Now;
+      var currentDate = DateTime.UtcNow; // ✅ Ensure it's UTC time
       var startOfWeek = currentDate.AddDays(-(int)currentDate.DayOfWeek);
       var expenses = await _context.Expenses
                      .Where(e => e.ProjectId == projectId && e.Date >= startOfWeek && e.Date <= currentDate)
