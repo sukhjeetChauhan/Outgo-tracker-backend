@@ -44,7 +44,8 @@ namespace Outgo_tracker_Backend.Controllers
     public async Task<ActionResult<IEnumerable<Expense>>> GetExpensesForWeek(int projectId)
     {
       var currentDate = DateTime.UtcNow; // ✅ Ensure it's UTC time
-      var startOfWeek = currentDate.AddDays(-(int)currentDate.DayOfWeek);
+      var startOfWeek = currentDate.AddDays(-(int)currentDate.DayOfWeek).Date;
+
       var expenses = await _context.Expenses
                      .Where(e => e.ProjectId == projectId && e.Date >= startOfWeek && e.Date <= currentDate)
                      .ToListAsync();
@@ -55,7 +56,7 @@ namespace Outgo_tracker_Backend.Controllers
     [HttpGet("Project/{projectId}/Past5Years")]
     public async Task<ActionResult<IEnumerable<Expense>>> GetExpensesForPast5Years(int projectId)
     {
-      var currentDate = DateTime.Now;
+      var currentDate = DateTime.UtcNow;
       var past5YearsDate = currentDate.AddYears(-5);
       var expenses = await _context.Expenses
                      .Where(e => e.ProjectId == projectId && e.Date >= past5YearsDate && e.Date <= currentDate)
