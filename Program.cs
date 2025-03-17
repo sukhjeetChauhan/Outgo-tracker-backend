@@ -57,6 +57,12 @@ builder.Services.AddCors(options =>
   });
 });
 
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+  options.MinimumSameSitePolicy = SameSiteMode.None; // ✅ Required for cross-origin cookies
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
