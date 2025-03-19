@@ -50,7 +50,7 @@ builder.Services.AddCors(options =>
 {
   options.AddPolicy("AllowReactFrontend", policy =>
   {
-    policy.WithOrigins("http://localhost:5173", "https://outgo-tracker.vercel.app") // Allow frontend origin
+    policy.WithOrigins("https://outgotracker.app", "https://outgo-tracker.vercel.app", "http://localhost:5173") // Allow frontend origin
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -60,6 +60,7 @@ builder.Services.AddCors(options =>
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
   options.MinimumSameSitePolicy = SameSiteMode.None; // ✅ Required for cross-origin cookies
+  options.Secure = CookieSecurePolicy.Always; // ✅ Required for HTTPS
 });
 
 
