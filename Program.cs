@@ -50,7 +50,7 @@ builder.Services.AddCors(options =>
 {
   options.AddPolicy("AllowReactFrontend", policy =>
   {
-    policy.WithOrigins("https://outgotracker.app", "https://outgo-tracker.vercel.app", "http://localhost:5173") // Allow frontend origin
+    policy.WithOrigins("https://outgotracker.app", "https://www.outgotracker.app", "http://localhost:5173") // Allow frontend origin
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
