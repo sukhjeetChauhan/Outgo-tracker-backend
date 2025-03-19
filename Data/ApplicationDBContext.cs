@@ -20,6 +20,7 @@ namespace Outgo_tracker_Backend.Data
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+      // ProjectUser Configuration
       modelBuilder.Entity<ProjectUser>()
           .HasKey(pu => pu.Id); // Primary key
 
@@ -30,21 +31,27 @@ namespace Outgo_tracker_Backend.Data
       modelBuilder.Entity<ProjectUser>()
           .HasOne(pu => pu.Project)
           .WithMany(p => p.ProjectUsers)
-          .HasForeignKey(pu => pu.ProjectId);
+          .HasForeignKey(pu => pu.ProjectId)
+          .OnDelete(DeleteBehavior.Cascade); // Cascade delete
 
+      // Expense Configuration
       modelBuilder.Entity<Expense>().HasKey(e => e.Id); // Primary key
 
       modelBuilder.Entity<Expense>()
           .HasOne(e => e.Project)
           .WithMany(p => p.Expenses)
-          .HasForeignKey(e => e.ProjectId);
+          .HasForeignKey(e => e.ProjectId)
+          .OnDelete(DeleteBehavior.Cascade); // Cascade delete
 
+      // Income Configuration
       modelBuilder.Entity<Income>().HasKey(i => i.Id); // Primary key
 
       modelBuilder.Entity<Income>()
           .HasOne(i => i.Project)
           .WithMany(p => p.Incomes)
-          .HasForeignKey(i => i.ProjectId);
+          .HasForeignKey(i => i.ProjectId)
+          .OnDelete(DeleteBehavior.Cascade); // Cascade delete
     }
+
   }
 }
