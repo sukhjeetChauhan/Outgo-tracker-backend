@@ -33,15 +33,34 @@ namespace Outgo_tracker_Backend.Controllers
       return projectJoinRequest;
     }
 
+    // Get: api/ProjectJoinRequest/UserId/5
+    [HttpGet("UserId/{userId}")]
+    public async Task<ActionResult<ProjectJoinRequest>> GetProjectJoinRequestByUserId(string userId)
+    {
+      var projectJoinRequest = await _context.ProjectJoinRequests
+    .FirstOrDefaultAsync(p => p.UserId == userId);
+    
+
+      if (projectJoinRequest == null)
+      {
+        return NotFound();
+      }
+
+      return projectJoinRequest;
+    }
+
     // POST: api/ProjectJoinRequest
     [HttpPost]
 
     public async Task<ActionResult<ProjectJoinRequest>> PostProjectJoinRequest(ProjectJoinRequest projectJoinRequest)
+    
     {
+      Console.WriteLine("PostProjectJoinRequest called");
       _context.ProjectJoinRequests.Add(projectJoinRequest);
       await _context.SaveChangesAsync();
 
-      return CreatedAtAction("GetProjectJoinRequest", new { id = projectJoinRequest.Id }, projectJoinRequest);
+      return CreatedAtAction("GetProjectJoinRequestByProjectId", new { id = projectJoinRequest.Id }, projectJoinRequest);
+
     }
 
     // PUT: api/ProjectJoinRequest/5
