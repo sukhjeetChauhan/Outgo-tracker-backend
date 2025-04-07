@@ -20,10 +20,11 @@ namespace Outgo_tracker_Backend.Controllers
     }
 
     // Get: api/ProjectJoinRequest/ProjectId/5
-    [HttpGet("ProjectId/{id}")]
-    public async Task<ActionResult<ProjectJoinRequest>> GetProjectJoinRequestByProjectId(int id)
+    [HttpGet("ProjectId/{projectId}")]
+    public async Task<ActionResult<ProjectJoinRequest>> GetProjectJoinRequestByProjectId(int projectId)
     {
-      var projectJoinRequest = await _context.ProjectJoinRequests.FindAsync(id);
+      var projectJoinRequest = await _context.ProjectJoinRequests
+        .FirstOrDefaultAsync(p => p.ProjectId == projectId);
 
       if (projectJoinRequest == null)
       {
@@ -59,7 +60,8 @@ namespace Outgo_tracker_Backend.Controllers
       _context.ProjectJoinRequests.Add(projectJoinRequest);
       await _context.SaveChangesAsync();
 
-      return CreatedAtAction("GetProjectJoinRequestByProjectId", new { id = projectJoinRequest.Id }, projectJoinRequest);
+      return CreatedAtAction(nameof(GetProjectJoinRequestByProjectId), new { projectId = projectJoinRequest.ProjectId }, projectJoinRequest);
+
 
     }
 
