@@ -16,6 +16,22 @@ namespace Outgo_tracker_Backend.Controllers
       _context = context;
     }
 
+    //GET: api/ProjectUser/GetByUserId/2
+    [HttpGet("GetByUserId/{userId}")]
+    public async Task<ActionResult<IEnumerable<ProjectUser>>> GetProjectUsersByUserId(string userId)
+    {
+      var projectUsers = await _context.ProjectUsers
+        .Where(pu => pu.UserId == userId)
+        .ToListAsync();
+
+      if (projectUsers == null || !projectUsers.Any())
+      {
+        return NotFound();
+      }
+
+      return Ok(projectUsers);
+    }
+
     // GET: api/ProjectUser/GetUsersByProjectId/2
     [HttpGet("GetUsersByProjectId{projectId}")]
 
