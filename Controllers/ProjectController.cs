@@ -53,6 +53,32 @@ namespace Outgo_tracker_Backend.Controllers
       return project.Id;
     }
 
+ 
+
+    // GET: api/Project/role/{userId}/{role}
+    [HttpGet("role/{userId}/{role}")]
+   
+    public async Task<ActionResult<IEnumerable<Project>>> GetProjectsWithRole(string userId, string role)
+    {
+        // Try to parse the string to your Role enum
+        if (!Enum.TryParse<Role>(role, true, out var parsedRole))
+        {
+            return BadRequest("Invalid role");
+        }
+
+        var projects = await _context.Projects
+            .Where(p => p.ProjectUsers
+                .Any(pu => pu.UserId == userId && pu.Role == parsedRole))
+            .ToListAsync();
+
+        if (projects == null || !projects.Any())
+        {
+            return NotFound();
+        }
+
+        return projects;
+    }
+
     // PUT: api/Project/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutProject(int id, Project project)

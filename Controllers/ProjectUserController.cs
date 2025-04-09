@@ -124,6 +124,25 @@ namespace Outgo_tracker_Backend.Controllers
       return NoContent();
     }
 
+    // DELETE: api/ProjectUser/DeleteByProjectAndUser/2/userId
+    [HttpDelete("DeleteByProjectAndUser/{projectId}/{userId}")]
+    public async Task<IActionResult> DeleteProjectUserByProjectAndUser(int projectId, string userId)
+    {
+      var projectUser = await _context.ProjectUsers
+      .FirstOrDefaultAsync(pu => pu.ProjectId == projectId && pu.UserId == userId);
+
+      if (projectUser == null)
+      {
+      return NotFound();
+      }
+
+      _context.ProjectUsers.Remove(projectUser);
+      await _context.SaveChangesAsync();
+
+      return NoContent();
+    }
+    
+
     private bool ProjectUserExists(int id)
     {
       return _context.ProjectUsers.Any(e => e.Id == id);
