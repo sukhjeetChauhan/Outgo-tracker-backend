@@ -105,7 +105,7 @@ namespace Outgo_tracker_Backend.Controllers
       _context.ProjectUsers.Add(projectUser);
       await _context.SaveChangesAsync();
 
-      return CreatedAtAction("GetProjectUser", new { id = projectUser.Id }, projectUser);
+      return Ok(projectUser); // Just return the created object
     }
 
     // DELETE: api/ProjectUser/5
