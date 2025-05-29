@@ -100,7 +100,7 @@ namespace Outgo_tracker_Backend.Controllers
       _context.Expenses.Add(expense);
       await _context.SaveChangesAsync();
 
-      return CreatedAtAction("GetExpense", new { id = expense.Id }, expense);
+      return Ok(expense);
     }
 
     // DELETE: api/Expenses/5

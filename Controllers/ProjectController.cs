@@ -53,30 +53,30 @@ namespace Outgo_tracker_Backend.Controllers
       return project.Id;
     }
 
- 
+
 
     // GET: api/Project/role/{userId}/{role}
     [HttpGet("role/{userId}/{role}")]
-   
+
     public async Task<ActionResult<IEnumerable<Project>>> GetProjectsWithRole(string userId, string role)
     {
-        // Try to parse the string to your Role enum
-        if (!Enum.TryParse<Role>(role, true, out var parsedRole))
-        {
-            return BadRequest("Invalid role");
-        }
+      // Try to parse the string to your Role enum
+      if (!Enum.TryParse<Role>(role, true, out var parsedRole))
+      {
+        return BadRequest("Invalid role");
+      }
 
-        var projects = await _context.Projects
-            .Where(p => p.ProjectUsers
-                .Any(pu => pu.UserId == userId && pu.Role == parsedRole))
-            .ToListAsync();
+      var projects = await _context.Projects
+          .Where(p => p.ProjectUsers
+              .Any(pu => pu.UserId == userId && pu.Role == parsedRole))
+          .ToListAsync();
 
-        if (projects == null || !projects.Any())
-        {
-            return NotFound();
-        }
+      if (projects == null || !projects.Any())
+      {
+        return NotFound();
+      }
 
-        return projects;
+      return projects;
     }
 
     // PUT: api/Project/5
@@ -117,7 +117,8 @@ namespace Outgo_tracker_Backend.Controllers
       _context.Projects.Add(project);
       await _context.SaveChangesAsync();
 
-      return CreatedAtAction("GetProject", new { id = project.Id }, project);
+      return Ok(project);
+
     }
 
     // DELETE: api/Project/5
