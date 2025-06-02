@@ -33,7 +33,7 @@ namespace Outgo_tracker_Backend.Controllers
     }
 
     // GET: api/ProjectUser/GetUsersByProjectId/2
-    [HttpGet("GetUsersByProjectId{projectId}")]
+    [HttpGet("GetUsersByProjectId/{projectId}")]
 
     public async Task<ActionResult<IEnumerable<string>>> GetProjectUserIds(int projectId)
     {
@@ -133,7 +133,7 @@ namespace Outgo_tracker_Backend.Controllers
 
       if (projectUser == null)
       {
-      return NotFound();
+        return NotFound();
       }
 
       _context.ProjectUsers.Remove(projectUser);
@@ -141,7 +141,7 @@ namespace Outgo_tracker_Backend.Controllers
 
       return NoContent();
     }
-    
+
 
     private bool ProjectUserExists(int id)
     {

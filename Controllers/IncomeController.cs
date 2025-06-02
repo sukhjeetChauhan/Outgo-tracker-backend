@@ -35,7 +35,7 @@ namespace Outgo_tracker_Backend.Controllers
       _context.Incomes.Add(income);
       await _context.SaveChangesAsync();
 
-      return CreatedAtAction("GetIncome", new { id = income.Id }, income);
+      return Ok();
     }
 
     // PUT: api/Income/5
