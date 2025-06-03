@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Outgo_tracker_Backend.Data;
-using Outgo_tracker_Backend.Models; // Add this line
+using Outgo_tracker_Backend.Models;
 
 namespace Outgo_tracker_Backend.Controllers
 {
