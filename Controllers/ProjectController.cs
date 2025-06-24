@@ -114,12 +114,21 @@ namespace Outgo_tracker_Backend.Controllers
     [HttpPost]
     public async Task<ActionResult<Project>> PostProject(Project project)
     {
+      // Check if a project with the same name already exists
+      bool nameExists = await _context.Projects
+          .AnyAsync(p => p.Name.ToLower() == project.Name.ToLower());
+
+      if (nameExists)
+      {
+        return Conflict(new { message = "A project with this name already exists." });
+      }
+
       _context.Projects.Add(project);
       await _context.SaveChangesAsync();
 
       return Ok(project);
-
     }
+
 
     // DELETE: api/Project/5
     [HttpDelete("{id}")]

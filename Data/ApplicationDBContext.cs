@@ -20,6 +20,10 @@ namespace Outgo_tracker_Backend.Data
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+      modelBuilder.Entity<Project>()
+        .HasIndex(p => p.Name)
+        .IsUnique();
       // ProjectUser Configuration
       modelBuilder.Entity<ProjectUser>()
           .HasKey(pu => pu.Id); // Primary key
